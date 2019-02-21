@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/maikebing/MQTTnet.AspNetCoreEx</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/maikebing/MQTTnet.AspNetCoreEx</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
