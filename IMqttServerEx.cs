@@ -10,44 +10,51 @@ using System.Threading.Tasks;
 
 namespace MQTTnet.AspNetCoreEx
 {
-    public interface IMqttServerEx:IMqttServer
+    public interface IMqttServerEx : IMqttServer
     {
-        event EventHandler<MqttClientConnectionValidatorEventArgs> ClientConnectionValidator;
+        MqttServerClientConnectionValidatorHandlerDelegate ClientConnectionValidatorHandler { get; set; }
     }
     public class MqttServerEx : MqttServer, IMqttServerEx
     {
+ 
         public MqttServerEx(IEnumerable<IMqttServerAdapter> adapters, IMqttNetChildLogger logger) : base(adapters, logger)
         {
-         
+        
         }
+        internal MqttServerConnectionValidator ConnectionValidator { get; set; } = new MqttServerConnectionValidator();
 
-        public void ConnectionValidator(MqttConnectionValidatorContext obj)
+
+
+
+
+
+        MqttServerClientConnectionValidatorHandlerDelegate _clientConnectionValidatorHandler;
+    public MqttServerClientConnectionValidatorHandlerDelegate ClientConnectionValidatorHandler 
         {
-            ClientConnectionValidator?.Invoke(this,new MqttClientConnectionValidatorEventArgs() { Context = obj });
+            get
+            {
+                return _clientConnectionValidatorHandler;
+            }
+            set
+            {
+                _clientConnectionValidatorHandler = value;
+                ConnectionValidator.Handler = _clientConnectionValidatorHandler;
+            }
         }
-        public event EventHandler<MqttClientConnectionValidatorEventArgs> ClientConnectionValidator;
-       
     }
     public class MqttHostedServerEx : MqttServerEx, IHostedService
     {
-        private   IMqttServerOptions _options;
-
         public MqttHostedServerEx(IMqttServerOptions options, IEnumerable<IMqttServerAdapter> adapters, IMqttNetLogger logger)
             : base(adapters, logger.CreateChildLogger(nameof(MqttHostedServerEx)))
         {
-            _options = options ?? throw new ArgumentNullException(nameof(options));
-        }
+            Options = options ?? throw new ArgumentNullException(nameof(options));
         
-        public new IMqttServerOptions Options
-        {
-            get { return _options; }
-            set { _options = value; }
         }
-
-
+        public new IMqttServerOptions Options { get; set; }
+     
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            return StartAsync(_options);
+            return StartAsync(Options);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
@@ -55,6 +62,6 @@ namespace MQTTnet.AspNetCoreEx
             return StopAsync();
         }
 
-   
+
     }
 }

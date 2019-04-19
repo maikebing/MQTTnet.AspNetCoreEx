@@ -2,7 +2,7 @@
 
 namespace MQTTnet.AspNetCoreEx
 {
-    public class MqttClientConnectionValidatorEventArgs
+    public class MqttServerClientConnectionValidatorEventArgs
     {
         public MqttConnectionValidatorContext Context { get; set; }
     }
