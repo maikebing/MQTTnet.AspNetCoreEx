@@ -4,7 +4,6 @@ using MQTTnet.Diagnostics;
 using MQTTnet.Server;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,22 +13,18 @@ namespace MQTTnet.AspNetCoreEx
     {
         MqttServerClientConnectionValidatorHandlerDelegate ClientConnectionValidatorHandler { get; set; }
     }
+
     public class MqttServerEx : MqttServer, IMqttServerEx
     {
- 
         public MqttServerEx(IEnumerable<IMqttServerAdapter> adapters, IMqttNetChildLogger logger) : base(adapters, logger)
         {
-        
         }
+
         internal MqttServerConnectionValidator ConnectionValidator { get; set; } = new MqttServerConnectionValidator();
 
+        private MqttServerClientConnectionValidatorHandlerDelegate _clientConnectionValidatorHandler;
 
-
-
-
-
-        MqttServerClientConnectionValidatorHandlerDelegate _clientConnectionValidatorHandler;
-    public MqttServerClientConnectionValidatorHandlerDelegate ClientConnectionValidatorHandler 
+        public MqttServerClientConnectionValidatorHandlerDelegate ClientConnectionValidatorHandler
         {
             get
             {
@@ -42,16 +37,17 @@ namespace MQTTnet.AspNetCoreEx
             }
         }
     }
+
     public class MqttHostedServerEx : MqttServerEx, IHostedService
     {
         public MqttHostedServerEx(IMqttServerOptions options, IEnumerable<IMqttServerAdapter> adapters, IMqttNetLogger logger)
             : base(adapters, logger.CreateChildLogger(nameof(MqttHostedServerEx)))
         {
             Options = options ?? throw new ArgumentNullException(nameof(options));
-        
         }
+
         public new IMqttServerOptions Options { get; set; }
-     
+
         public Task StartAsync(CancellationToken cancellationToken)
         {
             return StartAsync(Options);
@@ -61,7 +57,5 @@ namespace MQTTnet.AspNetCoreEx
         {
             return StopAsync();
         }
-
-
     }
 }

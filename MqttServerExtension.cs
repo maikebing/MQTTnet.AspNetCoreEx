@@ -10,7 +10,6 @@ namespace MQTTnet.AspNetCoreEx
 {
     public static class MqttServerExtension
     {
-      
         public static IApplicationBuilder UseMqttServerEx(this IApplicationBuilder app, Action<IMqttServerEx> configure)
         {
             var server = app.ApplicationServices.GetRequiredService<IMqttServerEx>();
@@ -19,10 +18,11 @@ namespace MQTTnet.AspNetCoreEx
 
             return app;
         }
-          public static IServiceCollection AddHostedMqttServerEx(this IServiceCollection services, IMqttServerOptions options)
+
+        public static IServiceCollection AddHostedMqttServerEx(this IServiceCollection services, IMqttServerOptions options)
         {
             if (options == null) throw new ArgumentNullException(nameof(options));
-            
+
             services.AddSingleton(options);
 
             services.AddHostedMqttServerEx();
@@ -32,7 +32,8 @@ namespace MQTTnet.AspNetCoreEx
 
         public static IServiceCollection AddHostedMqttServerEx(this IServiceCollection services, Action<MqttServerOptionsBuilder> configure)
         {
-            services.AddSingleton<IMqttServerOptions>(s => {
+            services.AddSingleton<IMqttServerOptions>(s =>
+            {
                 var builder = new MqttServerOptionsBuilder();
                 configure(builder);
                 return builder.Build();
@@ -45,7 +46,8 @@ namespace MQTTnet.AspNetCoreEx
 
         public static IServiceCollection AddHostedMqttServerExWithServices(this IServiceCollection services, Action<AspNetMqttServerOptionsBuilder> configure)
         {
-            services.AddSingleton(s => {
+            services.AddSingleton(s =>
+            {
                 var builder = new AspNetMqttServerOptionsBuilder(s);
                 configure(builder);
                 return builder.Build();

@@ -1,7 +1,5 @@
 ﻿using MQTTnet.AspNetCoreEx;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MQTTnet.Server
@@ -10,6 +8,7 @@ namespace MQTTnet.Server
     {
         private readonly Func<MqttServerClientConnectionValidatorEventArgs, Task> _handler;
         private readonly MqttServerConnectionValidator _connectionValidator;
+
         public MqttServerClientConnectionValidatorHandlerDelegate(Action<MqttServerClientConnectionValidatorEventArgs> handler)
         {
             if (handler == null)
@@ -22,6 +21,7 @@ namespace MQTTnet.Server
                 return Task.FromResult(0);
             };
         }
+
         public MqttServerClientConnectionValidatorHandlerDelegate(Func<MqttServerClientConnectionValidatorEventArgs, Task> handler)
         {
             if (handler == null)
@@ -29,15 +29,11 @@ namespace MQTTnet.Server
                 throw new ArgumentNullException("handler");
             }
             _handler = handler;
-           
         }
-      
-        
+
         public Task HandleClientConnectionValidatorAsync(MqttServerClientConnectionValidatorEventArgs eventArgs)
         {
             return _handler(eventArgs);
         }
-
-        
     }
 }
