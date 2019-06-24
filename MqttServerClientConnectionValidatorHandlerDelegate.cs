@@ -7,7 +7,6 @@ namespace MQTTnet.Server
     public class MqttServerClientConnectionValidatorHandlerDelegate : IMqttServerClientConnectionValidatorHandler
     {
         private readonly Func<MqttServerClientConnectionValidatorEventArgs, Task> _handler;
-        private readonly MqttServerConnectionValidator _connectionValidator;
 
         public MqttServerClientConnectionValidatorHandlerDelegate(Action<MqttServerClientConnectionValidatorEventArgs> handler)
         {
