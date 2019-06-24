@@ -74,14 +74,16 @@ namespace MQTTnet.AspNetCoreEx
             services.AddSingleton(childLogger);
             services.AddSingleton<MqttHostedServerEx>();
             services.AddSingleton<IHostedService>(s => s.GetService<MqttHostedServerEx>());
-            services.AddSingleton<IMqttServerEx>(s => {
+            services.AddSingleton<IMqttServerEx>(s =>
+            {
                 var mhse = s.GetService<MqttHostedServerEx>();
-                MqttServerOptions options =(MqttServerOptions) mhse.Options;
-                options.ConnectionValidator= mhse.ConnectionValidator;
+                var store = s.GetService<IMqttServerStorage>();
+                MqttServerOptions options = (MqttServerOptions)mhse.Options;
+                options.ConnectionValidator = mhse.ConnectionValidator;
+                if (options.Storage == null) options.Storage = store;
                 return mhse;
             }
             );
-            
             return services;
         }
     }
