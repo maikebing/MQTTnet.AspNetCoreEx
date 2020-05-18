@@ -5,8 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/maikebing/MQTTnet.AspNetCoreEx</PackageProjectUrl>
     <RepositoryUrl>https://github.com/maikebing/MQTTnet.AspNetCoreEx</RepositoryUrl>
-    <Version>3.0.9</Version>
-    <PackageIconUrl></PackageIconUrl>
+    <Version>3.0.11</Version>
     <PackageIcon>icon_det_256.png</PackageIcon>
   </PropertyGroup>
 
@@ -20,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MQTTnet" Version="3.0.9" />
-    <PackageReference Include="MQTTnet.AspNetCore" Version="3.0.9" />
+    <PackageReference Include="MQTTnet" Version="3.0.11" />
+    <PackageReference Include="MQTTnet.AspNetCore" Version="3.0.11" />
   </ItemGroup>
 
 </Project>
