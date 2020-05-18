@@ -41,7 +41,7 @@ namespace MQTTnet.AspNetCoreEx
     public class MqttHostedServerEx : MqttServerEx, IHostedService
     {
         public MqttHostedServerEx(IMqttServerOptions options, IEnumerable<IMqttServerAdapter> adapters, IMqttNetLogger logger)
-            : base(adapters, logger.CreateChildLogger(nameof(MqttHostedServerEx)))
+            : base(adapters, logger)
         {
             Options = options ?? throw new ArgumentNullException(nameof(options));
         }

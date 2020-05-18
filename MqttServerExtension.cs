@@ -71,9 +71,7 @@ namespace MQTTnet.AspNetCoreEx
         private static IServiceCollection AddHostedMqttServerEx(this IServiceCollection services)
         {
             var logger = new MqttNetLogger();
-            var childLogger = logger.CreateChildLogger("MqttServerEx");
             services.AddSingleton<IMqttNetLogger>(logger);
-            services.AddSingleton(childLogger);
             services.AddSingleton<MqttHostedServerEx>();
             services.AddSingleton<IHostedService>(s => s.GetService<MqttHostedServerEx>());
             services.AddSingleton<IMqttServerEx>(s =>
