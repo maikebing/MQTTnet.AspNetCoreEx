@@ -16,7 +16,7 @@ namespace MQTTnet.AspNetCoreEx
 
     public class MqttServerEx : MqttServer, IMqttServerEx
     {
-        public MqttServerEx(IEnumerable<IMqttServerAdapter> adapters, IMqttNetChildLogger logger) : base(adapters, logger)
+        public MqttServerEx(IEnumerable<IMqttServerAdapter> adapters, IMqttNetLogger logger) : base(adapters, logger)
         {
         }
 
