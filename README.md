@@ -3,7 +3,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/5hjxcfsvhhm3cebw?svg=true)](https://ci.appveyor.com/project/MaiKeBing/mqttnet-aspnetcoreex)
 
-` dotnet add package MQTTnet.AspNetCoreEx --version 3.0.9
+` dotnet add package MQTTnet.AspNetCoreEx 
 
 ```c#
 services.AddHostedMqttServerEx();
