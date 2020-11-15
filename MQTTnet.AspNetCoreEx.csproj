@@ -1,26 +1,28 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/maikebing/MQTTnet.AspNetCoreEx</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/maikebing/MQTTnet.AspNetCoreEx</RepositoryUrl>
-    <Version>3.0.11</Version>
-    <PackageIcon>icon_det_256.png</PackageIcon>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net5.0</TargetFrameworks>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://github.com/maikebing/MQTTnet.AspNetCoreEx</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/maikebing/MQTTnet.AspNetCoreEx</RepositoryUrl>
+		<Version>3.0.13</Version>
+		<PackageIcon>icon_det_256.png</PackageIcon>
+		<OutputType>Library</OutputType>
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove=".git" />
-    <None Remove=".gitignore" />
-    <None Include="icon_det_256.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove=".git" />
+		<None Remove=".gitignore" />
+		<None Include="icon_det_256.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MQTTnet" Version="3.0.11" />
-    <PackageReference Include="MQTTnet.AspNetCore" Version="3.0.11" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="MQTTnet" Version="3.0.13" />
+		<PackageReference Include="MQTTnet.AspNetCore" Version="3.0.13" />
+	</ItemGroup>
 
 </Project>
