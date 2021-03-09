@@ -5,7 +5,7 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageProjectUrl>https://github.com/maikebing/MQTTnet.AspNetCoreEx</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/maikebing/MQTTnet.AspNetCoreEx</RepositoryUrl>
-		<Version>3.0.14</Version>
+		<Version>3.0.15</Version>
 		<PackageIcon>icon_det_256.png</PackageIcon>
 		<OutputType>Library</OutputType>
 		<IsPackable>true</IsPackable>
