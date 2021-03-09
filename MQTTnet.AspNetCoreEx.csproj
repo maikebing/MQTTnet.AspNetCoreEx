@@ -21,8 +21,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MQTTnet" Version="3.0.14" />
-		<PackageReference Include="MQTTnet.AspNetCore" Version="3.0.14" />
+		<PackageReference Include="MQTTnet" Version="3.0.15" />
+		<PackageReference Include="MQTTnet.AspNetCore" Version="3.0.15" />
 	</ItemGroup>
 
 </Project>
