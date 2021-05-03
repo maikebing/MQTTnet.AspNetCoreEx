@@ -1,0 +1,15 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "21:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: MQTTnet
+    versions:
+    - 3.0.15
+  - dependency-name: MQTTnet.AspNetCore
+    versions:
+    - 3.0.14
