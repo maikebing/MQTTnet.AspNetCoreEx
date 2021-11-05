@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using MQTTnet.Adapter;
 using MQTTnet.Diagnostics;
+using MQTTnet.Diagnostics.Logger;
 using MQTTnet.Server;
 using System;
 using System.Collections.Generic;
