@@ -73,6 +73,7 @@ namespace MQTTnet.AspNetCoreEx
         {
             services.AddSingleton<MqttHostedServerEx>();
             services.AddSingleton<IHostedService>(s => s.GetService<MqttHostedServerEx>());
+            services.AddTransient<IMqttNetLogger, MqttNetLogger>();
             services.AddSingleton<IMqttServerEx>(s =>
             {
                 var mhse = s.GetService<MqttHostedServerEx>();
