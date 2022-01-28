@@ -13,7 +13,7 @@ namespace MQTTnet.Server
             _logger = logger;
         }
 
-
+        public bool IsEnabled => true;
 
         public void Publish(MqttNetLogLevel logLevel, string source, string message, object[] parameters, Exception exception)
         {
